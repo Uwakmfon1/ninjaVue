@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<style>
+    *{
+        list-style: none;
+        box-sizing: border-box;
+
+    }
+  
+    .box {
+        height: 50px;
+        width: 500px;
+        background-color: gray;
+        margin-bottom: 10px;
+    }
+
+    .box:nth-of-type(4) {
+        height: 500px;
+        width: 500px;
+        background-color: green;
+    }
+  
+  
+</style>
+
+<body>
+
+    <div id="app">
+        <div v-if="showBooks">
+            <h2>{{title}}</h2>
+        </div>
+        
+        <button v-on:click="hideBooks()">{{ spanTitle }}
+            <span>{{ spanTitle }}</span>
+        </button>
+
+        <button v-on:click="age++">Increase Age</button>
+        <button v-on:click="changeTitle()">Change Title</button>
+        <br><br>
+
+        <div class="box" @mouseover="handleEvent($event, 5)">Mouseover (enter)</div>
+        <div class="box" @mouseleave="handleEvent">Mouseleave</div>
+        <div class="box" @dblclick="handleEvent">Double Click</div>
+        <div class="box" @mousemove="handleMousemove">position - {{ x }} {{ y }}</div>
+
+        <div>
+            <ul v-for="book in books">
+                <li><span><b>Title: </b>{{ book.title }}</span> <span><b>Author:</b> {{ book.author }}</span> <span> <b>Year Published:</b> {{ book.year }}</span></li>
+            </ul>
+        </div>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
