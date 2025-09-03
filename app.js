@@ -2,10 +2,10 @@ const app = Vue.createApp({
     data() {
         return {
             showBooks: true,
-             books:[
-                {title:'The Hundlers',author:'King Waldron', year:'2011'},
-                {title:'The Search for the Sapphire',author:'King Waldron', year:'2015'},
-                {title:'Tales of the Elmas',author:'John Gippins', year:'2013'}
+            books:[
+                {title:'The Alchemist', author:'Paulo Coelo', year:'1988', image:"assets/img/alchemist.jpeg", isFav:false},
+                {title:'Adventures of Huckleberry Finn', author:'Mark Twain', year:'1884', image:"assets/img/huckleBerry.jpeg", isFav:true},
+                {title:'Normal People', author:'Sally Rooney', year:'2018', image:"assets/img/normalPeople.jpeg", isFav:false}
             ],
             title: 'She Stoops to Conquer',
             author: 'Othello',
@@ -38,6 +38,16 @@ const app = Vue.createApp({
         handleMousemove(e){
             this.x = e.offsetX
             this.y = e.offsetY
+        },
+
+        toggleIsFav(e){
+            e.isFav = !e.isFav;                          
+        }
+    },
+    
+    computed: {
+        filteredBooks(){
+            return this.books.filter((book)=> book.isFav);
         }
     }
 });
